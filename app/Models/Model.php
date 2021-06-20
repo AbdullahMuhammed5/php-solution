@@ -1,8 +1,8 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
-use App\SQLiteConnection;
+use App\Config\SQLiteConnection;
 
 class Model
 {

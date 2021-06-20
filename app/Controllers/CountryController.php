@@ -1,8 +1,8 @@
 <?php
 
-namespace App\controllers;
+namespace App\Controllers;
 
-use App\models\Country;
+use App\Models\Country;
 
 class CountryController
 {

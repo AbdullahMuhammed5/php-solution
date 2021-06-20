@@ -3,8 +3,9 @@ namespace App;
 
 require 'vendor/autoload.php';
 
-use App\controllers\CountryController;
-use App\controllers\CustomerController;
+use App\Config\SQLiteConnection;
+use App\Controllers\CountryController;
+use App\Controllers\CustomerController;
 
 $pdo = (new SQLiteConnection())->connect();
 

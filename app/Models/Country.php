@@ -1,8 +1,8 @@
 <?php
 
+namespace App\Models;
 
-namespace App\models;
-
+use App\DatabaseGateways\CountryGateway;
 use JsonSerializable;
 
 class Country extends Model implements JsonSerializable
@@ -55,7 +55,7 @@ class Country extends Model implements JsonSerializable
 
     public function getAll()
     {
-        $countryGateway = new \App\CountryGateway($this->db);
+        $countryGateway = new CountryGateway($this->db);
         $countries = $countryGateway->all();
         return array_map(function ($country) {
             return $this->setModel($country);

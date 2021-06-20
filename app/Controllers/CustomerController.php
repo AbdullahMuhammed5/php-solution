@@ -1,8 +1,8 @@
 <?php
 
-namespace App\controllers;
+namespace App\Controllers;
 
-use App\models\Customer;
+use App\Models\Customer;
 
 class CustomerController
 {

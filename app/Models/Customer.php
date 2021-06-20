@@ -1,8 +1,8 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
-use App\CustomerGateway;
+use App\DatabaseGateways\CustomerGateway;
 use JsonSerializable;
 
 class Customer extends Model implements JsonSerializable
