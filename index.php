@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 use App\controllers\CountryController;
 use App\controllers\CustomerController;
@@ -29,7 +29,7 @@ switch ($uri[1]){
         echo $customerController->index();
         break;
     default:
-        header('Location: views');
+        header('Location: app/views');
         break;
 }
 

@@ -5,11 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Phone Number List</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/bootstrap.css">
-    <link rel="stylesheet" href="../public/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap.css">
+    <link rel="stylesheet" href="../../public/css/jquery.dataTables.min.css">
 
     <style>
         body{
@@ -63,8 +63,8 @@
         </div>
     </div>
 
-    <script src="../public/js/jquery-3.5.1.js"></script>
-    <script src="../public/js/jquery.dataTables.min.js"></script>
-    <script src="../public/js/app.js"></script>
+    <script src="../../public/js/jquery-3.5.1.js"></script>
+    <script src="../../public/js/jquery.dataTables.min.js"></script>
+    <script src="../../public/js/app.js"></script>
 </body>
 </html>

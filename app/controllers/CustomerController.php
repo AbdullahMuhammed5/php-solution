@@ -20,7 +20,7 @@ class CustomerController
                 return $item->getPhoneState() == $_GET['phone_state'];
             }));
         }
-
+        shuffle($customers); // randomly sort the array
         return json_encode(['data' => $customers]);
     }
 }
