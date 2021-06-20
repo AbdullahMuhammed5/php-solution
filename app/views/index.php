@@ -6,8 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/bootstrap.css">
     <link rel="stylesheet" href="../public/css/jquery.dataTables.min.css">
+
     <style>
         body{
             background-color: #eaeaea;
@@ -38,6 +41,7 @@
                         <div class="col-sm-6">
                             <label for="state-ddl"></label>
                             <select name="state" id="state-ddl" class="form-control">
+                                <option value="">Select Phone State</option>
                                 <option value="1">Valid phone numbers</option>
                                 <option value="0">Invalid phone numbers</option>
                             </select>

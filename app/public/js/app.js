@@ -3,25 +3,13 @@ $(document).ready(function() {
     const countryElem = $('#country-ddl')
     const stateElem = $('#state-ddl')
 
-    const handleCountryChange = (e) => {
+    async function handleFilterChange(e) {
         $.ajax({
             type: 'GET',
-            url: `${url}?q=${e.target.value}`,
-            success: (res) => {
+            url: `${url}/customers?country_code=${countryElem.val()}&phone_state=${stateElem.val()}`,
+            success: (result) => {
                 $('#example').dataTable().fnClearTable();
-                $('#example').dataTable().fnAddData(res.data);
-            },
-            error: (res) => console.log('Error')
-        })
-    }
-
-    const handleStateChange = (e) => {
-        $.ajax({
-            type: 'GET',
-            url: `${url}?q=${e.target.value}`,
-            success: (res) => {
-                $('#example').dataTable().fnClearTable();
-                $('#example').dataTable().fnAddData(res.data);
+                $('#example').dataTable().fnAddData(result.data);
             },
             error: (res) => console.log('Error')
         })
@@ -40,26 +28,37 @@ $(document).ready(function() {
             success: (res) => {
                 renderCountryListOption(res)
             },
-            error: (res) => console.log('Error')
+            error: (res) => console.log(res)
         })
     }
 
     renderCountryList()
+    initialiseTable()
 
-    countryElem.on('change', handleCountryChange)
-    countryElem.on('change', handleStateChange)
+    countryElem.on('change', handleFilterChange)
+    stateElem.on('change', handleFilterChange)
 
-    // to be seperated in initialize function
-    $('#example').DataTable( {
-        "ajax": url,
-        columns: [
-            { data: "country" },
-            { data: "phone_state" },
-            { data: "country_code"},
-            { data: "phone"},
-        ],
-        pageLength: 5,
-        lengthMenu: [5, 10, 20, 50, 100],
-    } );
+    function initialiseTable(){
+        $('#example').DataTable( {
+            "ajax": `${url}/customers`,
+            // data: asyncData,
+            "aoColumns": [
+                { data: "country"},
+                {
+                    "mData": "phone_state",
+                    "mRender": function (data, type, row) {
+                        return data ?
+                            "<i class=\"fa fa-check-circle fa-2x\" style=\"color: green\"></i>" :
+                            "<i class=\"fa fa-times-circle fa-2x\" style=\"color: red\"></i>"
+                    }
+                },
+                { data: "country_code"},
+                { data: "phone"}
+            ],
+            pageLength: 5,
+            lengthMenu: [5, 10, 20, 50, 100],
+        } );
+    }
+
 } );
 
