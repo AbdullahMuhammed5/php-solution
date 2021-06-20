@@ -21,6 +21,6 @@ class CustomerController
             }));
         }
 
-        echo json_encode(['data' => $customers]);
+        return json_encode(['data' => $customers]);
     }
 }

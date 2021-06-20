@@ -3,13 +3,13 @@ namespace App;
 
 require '../vendor/autoload.php';
 
+use App\controllers\CountryController;
 use App\controllers\CustomerController;
-use App\models\Country;
 
 $pdo = (new SQLiteConnection())->connect();
 
 if (!$pdo)
-    echo 'Whoops, could not connect to the SQLite database!';
+    echo 'Something went wrong while connecting to the SQLite database!';
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
@@ -21,15 +21,15 @@ $uri = explode('/', $uri);
 
 switch ($uri[1]){
     case 'countries':
-        $countries = new Country();
-        echo json_encode($countries->getAll());
-        exit();
+        $countryController = new CountryController();
+        echo $countryController->index();
+        break;
     case 'customers':
         $customerController = new CustomerController();
-        $customerController->index();
-        exit();
+        echo $customerController->index();
+        break;
     default:
-        header('Location: views/index');
+        header('Location: views');
         break;
 }
 

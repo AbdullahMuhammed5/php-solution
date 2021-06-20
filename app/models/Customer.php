@@ -1,9 +1,8 @@
 <?php
 
-
 namespace App\models;
 
-
+use App\CustomerGateway;
 use JsonSerializable;
 
 class Customer extends Model implements JsonSerializable
@@ -58,7 +57,7 @@ class Customer extends Model implements JsonSerializable
     public function getCountry()
     {
         // preg_grep returns array, so we need to get the key of first match
-        return array_keys(preg_grep("/".$this->getCountryCode()."/", Country::regex))[0];
+        return array_keys(preg_grep("/".$this->getCountryCode()."/", Country::REGEX))[0];
     }
 
     public function setCountry($value)
@@ -73,7 +72,7 @@ class Customer extends Model implements JsonSerializable
 
     public function getPhoneState()
     {
-        return (int) preg_match(Country::regex[$this->getCountry()], $this->getFullPhone());
+        return (int) preg_match(Country::REGEX[$this->getCountry()], $this->getFullPhone());
     }
 
     public function setModel($data)
@@ -90,7 +89,7 @@ class Customer extends Model implements JsonSerializable
 
     public function getAll()
     {
-        $customerGateway = new \App\CustomerGateway($this->db);
+        $customerGateway = new CustomerGateway($this->db);
         $customers = $customerGateway->all();
         return array_map(function ($customer) {
             return $this->setModel($customer);
@@ -99,7 +98,7 @@ class Customer extends Model implements JsonSerializable
 
     public function findWhereLike($value)
     {
-        $customerGateway = new \App\CustomerGateway($this->db);
+        $customerGateway = new CustomerGateway($this->db);
         $customers = $customerGateway->findWhereLike($value);
         return array_map(function ($customer) {
             return $this->setModel($customer);

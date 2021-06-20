@@ -11,7 +11,7 @@ class Country extends Model implements JsonSerializable
     private $name;
     private $code;
 
-    const regex = [
+    const REGEX = [
         'Cameroon'  => '/\(237\)[\ ][2368]\d{7,8}$/',
         'Ethiopia' => '/\(251\)[\ ][1-59]\d{8}$/',
         'Morocco'  => '/\(212\)[\ ][5-9]\d{8}$/',
