@@ -32,16 +32,9 @@ $(document).ready(function() {
         })
     }
 
-    renderCountryList()
-    initialiseTable()
-
-    countryElem.on('change', handleFilterChange)
-    stateElem.on('change', handleFilterChange)
-
     function initialiseTable(){
         $('#example').DataTable( {
             "ajax": `${url}/customers`,
-            // data: asyncData,
             "aoColumns": [
                 { data: "country"},
                 {
@@ -60,6 +53,12 @@ $(document).ready(function() {
             order: []
         } );
     }
+
+    renderCountryList()
+    initialiseTable()
+
+    countryElem.on('change', handleFilterChange)
+    stateElem.on('change', handleFilterChange)
 
 } );
 
